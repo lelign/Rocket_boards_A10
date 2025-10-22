@@ -1,0 +1,8 @@
+gcc-arm-11.2-2022.02-x86_64-arm-none-linux-gnueabihf/
+site/
+u-boot-socfpga/
+16-10_13_09_24_hps_core_periph_vic_input_files/
+a10_example.sdmmc/
+gsrd_reference/
+sd_card_images/
+u-boot
