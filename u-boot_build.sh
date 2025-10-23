@@ -99,6 +99,10 @@ else
 fi
 
 tools/mkimage -E -f board/altera/arria10-socdk/fit_spl_fpga.its fit_spl_fpga.itb
+fit_spl_fpga_itb=$(realpath ./fit_spl_fpga.itb)
+date_fit_spl_fpga_itb=$(date -r $fit_spl_fpga_itb  +"%m-%d %H:%M:%S")
+echo -e "\t$fit_spl_fpga_itb \t$date_fit_spl_fpga_itb" | tee -a $home/log
+
 
 build=false
 if [[ -f ./fit_spl_fpga.itb && -f ./u-boot.img ]]; then
@@ -151,6 +155,7 @@ if $build; then
 	cp $linux_kernel $(pwd)
 	cp $file_dtb $(pwd)	
 	cp $u_boot_img $(pwd)
+	cp $fit_spl_fpga_itb $(pwd)
 
 	mkdir extlinux
 	echo "LABEL Arria10 SOCDK SDMMC" > extlinux/extlinux.conf
@@ -182,5 +187,6 @@ if [[ -n $(file sdcard_a10.img | grep -c "partition 1") && \
 	cp $hps_xml $(pwd)
 	cp $home/log $(pwd)
 	cp $handoff_h $(pwd)
+	cp $fit_spl_fpga_itb $(pwd)
 	echo -e "Path to sd_card image: \n\t$path_sd_card/sdcard_a10.img\n" | tee -a $home/log
 fi
