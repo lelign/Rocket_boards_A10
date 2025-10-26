@@ -1,0 +1,63 @@
+FIT description: FIT image with FPGA bistream
+Created:         Sun Oct 26 17:22:07 2025
+ Image 0 (fpga-periph-1)
+  Description:  FPGA peripheral bitstream
+  Created:      Sun Oct 26 17:22:07 2025
+  Type:         FPGA Image
+  Compression:  uncompressed
+  Data Size:    313352 Bytes = 306.01 KiB = 0.30 MiB
+  Load Address: unavailable
+ Image 1 (fpga-core-1)
+  Description:  FPGA core bitstream
+  Created:      Sun Oct 26 17:22:07 2025
+  Type:         FPGA Image
+  Compression:  uncompressed
+  Data Size:    7319144 Bytes = 7147.60 KiB = 6.98 MiB
+  Load Address: unavailable
+ Default Configuration: 'config-1'
+ Configuration 0 (config-1)
+  Description:  Boot with FPGA early IO release config
+  Kernel:       unavailable
+  FPGA:         fpga-periph-1
+FIT description: FIT image with FPGA bistream
+Created:         Sun Oct 26 17:26:26 2025
+ Image 0 (fpga-periph-1)
+  Description:  FPGA peripheral bitstream
+  Created:      Sun Oct 26 17:26:26 2025
+  Type:         FPGA Image
+  Compression:  uncompressed
+  Data Size:    313352 Bytes = 306.01 KiB = 0.30 MiB
+  Load Address: unavailable
+ Image 1 (fpga-core-1)
+  Description:  FPGA core bitstream
+  Created:      Sun Oct 26 17:26:26 2025
+  Type:         FPGA Image
+  Compression:  uncompressed
+  Data Size:    7319144 Bytes = 7147.60 KiB = 6.98 MiB
+  Load Address: unavailable
+ Default Configuration: 'config-1'
+ Configuration 0 (config-1)
+  Description:  Boot with FPGA early IO release config
+  Kernel:       unavailable
+  FPGA:         fpga-periph-1
+FIT description: FIT image with FPGA bistream
+Created:         Sun Oct 26 17:33:18 2025
+ Image 0 (fpga-periph-1)
+  Description:  FPGA peripheral bitstream
+  Created:      Sun Oct 26 17:33:18 2025
+  Type:         FPGA Image
+  Compression:  uncompressed
+  Data Size:    313352 Bytes = 306.01 KiB = 0.30 MiB
+  Load Address: unavailable
+ Image 1 (fpga-core-1)
+  Description:  FPGA core bitstream
+  Created:      Sun Oct 26 17:33:18 2025
+  Type:         FPGA Image
+  Compression:  uncompressed
+  Data Size:    7319144 Bytes = 7147.60 KiB = 6.98 MiB
+  Load Address: unavailable
+ Default Configuration: 'config-1'
+ Configuration 0 (config-1)
+  Description:  Boot with FPGA early IO release config
+  Kernel:       unavailable
+  FPGA:         fpga-periph-1

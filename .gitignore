@@ -11,3 +11,4 @@ gsrd
 log
 u-boot.log
 temp.sh
+try_to_break_sd_gold.d/

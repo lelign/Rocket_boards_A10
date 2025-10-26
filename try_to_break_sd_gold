@@ -1,0 +1,60 @@
+
+#	0 все на местах
+FPGA: Early Release Succeeded.
+FPGA: Checking FPGA configuration setting ...
+FPGA: Start to program peripheral/full bitstream ...
+FPGA: Early Release Succeeded.
+
+U-Boot SPL 2025.07-ge5f40a8ed1ec-dirty (Oct 20 2025 - 19:06:53 +0300)
+DDRCAL: Success
+FPGA: Checking FPGA configuration setting ...
+FPGA: Start to program core bitstream ...
+fpgamgr_program_poll_usermode: Failed to enter user mode with error code -110
+FPGA: Poll usermode failed with error code -110
+Trying to boot from MMC1
+
+
+U-Boot 2025.07-ge5f40a8ed1ec-dirty (Oct 20 2025 - 19:06:53 +0300)socfpga_arria10
+                                                                                                                        
+CPU:   Altera SoCFPGA Arria 10                                                                                          
+BOOT:  SD/MMC External Transceiver (1.8V)                                                                               
+Model: Altera SOCFPGA Arria 10                                                                                          
+DRAM:  1 GiB                                                                                                            
+Core:  78 devices, 20 uclasses, devicetree: separate                                                                    
+WDT:   Started watchdog@ffd00300 with servicing every 1000ms (10s timeout)                                              
+MMC:   dwmmc0@ff808000: 0                                                                                               
+Loading Environment from MMC... Reading from MMC(0)... *** Warning - bad CRC, using default environment                 
+                                                                                                                        
+In:    serial                                                                                                           
+Out:   serial                                                                                                           
+Err:   serial                                                                                                           
+Model: Altera SOCFPGA Arria 10                                                                                          
+Net:   Could not get PHY for ethernet@ff800000: addr -1                                                                 
+No ethernet found.                                                                                                      
+                                                                                                                        
+Hit any key to stop autoboot:  2
+
+
+#	1 без extlinux все так же
+#	2 без root и zimage так же
+
+#	3 после удаления u-boot.img 
+	
+	после	Trying to boot from MMC1                                                                                                
+	spl_load_image_fat: error reading image u-boot.img, err - -5                                                            
+	Error: -2                                                                                                               
+	SPL: failed to boot from all boot devices                                                                               
+	### ERROR ### Please RESET the board ### 
+
+#	4 вернул u-boot.img
+	как в ситуации 0
+
+#	5 удалил socfpga_arria10_socdk_sdmmc-arria10.dtb
+	как в ситуации 0
+
+
+вывод :
+для старта u-boot на на SD карте достаточно иметь 
+	1 в oxa2 u-boot-splx4.sfp
+	2 в FAT32 u-boot.img
+	3 в FAT32 fit_spl_fpga.itb
