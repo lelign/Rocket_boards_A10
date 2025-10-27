@@ -172,7 +172,7 @@ if [[ -f ./fit_spl_fpga.itb && -f ./u-boot.img ]]; then
 	echo -e "u-boot использовал файлы из:" | tee -a $home/log
     date_sof_file=$(date -r $sof_file  +"%B-%d %H:%M:%S")
     echo -e "\t\t.sof = $sof_file $date_sof_file" | tee -a $home/log
-    echo -e "\t\thps.xlm = $hps_isw_handoff_dir/hps.xml $recorded_hps_xml" | tee -a $home/log
+    echo -e "\t\thps.xml = $hps_isw_handoff_dir/hps.xml $recorded_hps_xml" | tee -a $home/log
     echo -e "Проверка \n\t$(file ./fit_spl_fpga.itb)\t"$(date -r ./fit_spl_fpga.itb  +"%B-%d %H:%M:%S") | tee -a $home/log
 else
 	echo -e "\n\n\t\t\tУВЫ...\n" | tee -a $home/log
@@ -224,21 +224,27 @@ if $build; then
 	mkdir rootfs && cd rootfs
 	tar xf $tar_root
 	rm -rf lib/modules/*
+
 	cd $path_sd_card
 	cp $u_boot_spl $(pwd)
 
 	########################### make img
+    # for raw 1M enough
+    # for sdfs 32 M
+    # for rootfs 130M
+    # total 1+32+132=164M
 	cd $path_sd_card
 	sudo python3 $home/make_sdimage_p3.py -f \
-	-P $u_boot_spl,num=3,format=raw,size=10M,type=A2  \
+	-P $u_boot_spl,num=3,format=raw,size=1M,type=A2  \
 	-P sdfs/*,num=1,format=fat32,size=32M \
-	-P rootfs/*,num=2,format=ext3,size=132M \
-	-s 600M \
-	-n sdcard_a10.img
+	-P rootfs/*,num=2,format=ext3,size=172M \
+	-s 210M \
+    -n $title.img
+	#-n sdcard_a10.img
 fi
-if [[ -n $(file sdcard_a10.img | grep -c "partition 1") && \
-	-n $(file sdcard_a10.img | grep -c "partition 2") && \
-	-n $(file sdcard_a10.img | grep -c "partition 3") ]]; then
+if [[ -n $(file $title.img | grep -c "partition 1") && \
+	-n $(file $title_a10.img | grep -c "partition 2") && \
+	-n $(file $title.img | grep -c "partition 3") ]]; then
 	mkdir used_files && cd used_files
 	cp $sof_file $(pwd)
 	cp $u_boot_spl $(pwd)
@@ -246,5 +252,5 @@ if [[ -n $(file sdcard_a10.img | grep -c "partition 1") && \
 	cp $home/log $(pwd)
 	cp $handoff_h $(pwd)
 	cp $fit_spl_fpga_itb $(pwd)
-	echo -e "Path to sd_card image: \n\t$path_sd_card/sdcard_a10.img\n" | tee -a $home/log
+	echo -e "Path to sd_card image: \n\t$path_sd_card/$title.img\n" | tee -a $home/log
 fi
